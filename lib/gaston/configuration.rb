@@ -25,6 +25,9 @@ class Gaston
 
       def files=(files)
         @files.concat files
+        Gaston.instance.instance_variable_set '@store', nil
+        Gaston.instance.instance_variable_set '@hash_from_files', nil
+        @files
       end
 
       def reset_files
