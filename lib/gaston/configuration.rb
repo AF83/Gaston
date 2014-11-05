@@ -4,7 +4,7 @@ class Gaston
 
     class << self
 
-      attr_accessor :files, :env
+      attr_reader :files, :env
 
       # Define a configure block.
       #
@@ -23,6 +23,14 @@ class Gaston
         yield self
       end
 
+      def files=(files)
+        @files.concat files
+      end
+
+      def reset_files
+        @files = []
+      end
+
       def env=(env)
         if env
           @env = env
@@ -37,7 +45,7 @@ class Gaston
       # @since 0.0.1
       #
       def default_values!
-        @files = []
+        @files ||= []
         @env = :development
       end
 

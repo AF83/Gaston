@@ -25,4 +25,7 @@ describe Gaston::Configuration do
     Gaston::Configuration.env.should eq(:production)
   end
 
+  after do
+    Gaston::Configuration.reset_files
+  end
 end
